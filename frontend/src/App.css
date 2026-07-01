@@ -1222,3 +1222,75 @@ input:checked+.slider:before {
 .new-chat-btn:hover {
   transform: translateY(-2px);
 }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 10px;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .brand {
+    margin-bottom: 0;
+  }
+  
+  .brand h1 {
+    display: none;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .nav-links button {
+    padding: 10px;
+    justify-content: center;
+  }
+  
+  .nav-links button span {
+    display: none;
+  }
+  
+  .chat-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .history-sidebar {
+    display: none;
+  }
+  
+  .messages-container {
+    padding: 15px;
+  }
+  
+  .input-area {
+    padding: 15px;
+    gap: 10px;
+  }
+  
+  .message-bubble {
+    max-width: 90%;
+  }
+  
+  .mic-btn {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .tab-pane {
+    padding: 20px;
+  }
+}
