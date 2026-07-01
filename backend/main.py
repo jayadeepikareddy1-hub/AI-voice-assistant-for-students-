@@ -284,7 +284,8 @@ async def chat_endpoint(request: ChatRequest):
             communicate = edge_tts.Communicate(tts_text, voice_name, rate=rate, pitch=pitch)
             await communicate.save(audio_filepath)
             # Remove any trailing newlines from base URL and format
-            audio_url = f"http://localhost:8000/audio/{audio_filename}"
+            base_url = os.getenv("API_BASE_URL", "http://localhost:8000")
+            audio_url = f"{base_url}/audio/{audio_filename}"
         except Exception as e:
             print(f"Edge TTS Error: {e}")
             
