@@ -189,6 +189,11 @@ function App() {
       currentAudioRef.current.currentTime = 0;
     }
 
+    // Unlock Audio Context for Mobile Browsers
+    const mobileAudio = new Audio();
+    mobileAudio.play().catch(e => {}); // Silent play to unlock
+
+
     // Process attachments to base64
     const processedAttachments = await Promise.all(attachments.map(async (att) => {
       if (att.url) return { name: att.name, type: 'image', data: att.url };
@@ -253,10 +258,10 @@ function App() {
 
         if (isVoiceEnabled) {
           if (data.audio_url) {
-            const audio = new Audio(data.audio_url);
-            audio.playbackRate = speechRate;
-            audio.play();
-            currentAudioRef.current = audio;
+            mobileAudio.src = data.audio_url;
+            mobileAudio.playbackRate = speechRate;
+            mobileAudio.play().catch(err => console.log("Audio error:", err));
+            currentAudioRef.current = mobileAudio;
           } else {
             speak(data.response);
           }
